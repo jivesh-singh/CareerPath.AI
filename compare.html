@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Careers Side-by-Side - CareerPath AI</title>
+    <meta name="description" content="Compare any two career paths side-by-side across qualifications, technical skills, match score, career trajectory, and daily responsibilities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link">Assessment</a></li>
+                    <li><a href="careers.html" class="nav-link">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link active">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <a href="assessment.html" class="btn btn-primary dynamic-assessment-cta">
+                    <i data-lucide="sparkles"></i> <span>Start Assessment</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container section-sm">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <span class="section-tag"><i data-lucide="columns-2"></i> Direct Comparison</span>
+            <h1 class="section-title">Side-by-Side Career Comparison</h1>
+            <p class="section-desc">Evaluate two pathways across skills, education, daily work, and industry demand to choose what fits you best.</p>
+        </div>
+
+        <!-- Career Selectors Bar -->
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
+            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: center;">
+                <div>
+                    <label for="select-career-1" class="form-label" style="font-size: 0.9rem;">Career A</label>
+                    <select id="select-career-1" class="form-control" style="font-weight: 600;">
+                        <!-- Populated via JS -->
+                    </select>
+                </div>
+
+                <div style="text-align: center; color: var(--text-muted); font-weight: 700; padding: 0 0.5rem; margin-top: 1.5rem;">
+                    VS
+                </div>
+
+                <div>
+                    <label for="select-career-2" class="form-label" style="font-size: 0.9rem;">Career B</label>
+                    <select id="select-career-2" class="form-control" style="font-weight: 600;">
+                        <!-- Populated via JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table Wrapper -->
+        <div class="comparison-wrapper">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 24%;">Evaluation Metric</th>
+                        <th id="comp-header-1" style="width: 38%; font-size: 1.15rem; color: var(--primary);">Career A</th>
+                        <th id="comp-header-2" style="width: 38%; font-size: 1.15rem; color: var(--accent);">Career B</th>
+                    </tr>
+                </thead>
+                <tbody id="comparison-tbody">
+                    <!-- Populated dynamically via js/compare.js -->
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="assessment.html" class="btn btn-primary btn-lg">
+                <i data-lucide="sparkles"></i> <span>Evaluate Both Against Your Profile</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All comparison data verified for educational accuracy.</p>
+            <p><a href="careers.html">Explore All Careers</a> • <a href="resources.html">Learning Resources</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/careers-data.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/compare.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

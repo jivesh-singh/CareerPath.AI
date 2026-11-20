@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Career Assessment - CareerPath AI</title>
+    <meta name="description" content="Take our interactive multi-step career assessment to discover your optimal career direction based on your technical skills, interests, and academic background.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link active">Assessment</a></li>
+                    <li><a href="careers.html" class="nav-link">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <button type="button" id="btn-quick-fill" class="btn btn-secondary btn-sm" title="Fill sample data for quick evaluation">
+                    <i data-lucide="wand-2"></i> <span>Sample Demo Data</span>
+                </button>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="assessment-container">
+            <div class="assessment-card" data-tilt>
+                <!-- Assessment Progress Header -->
+                <div class="progress-header">
+                    <div class="progress-info">
+                        <span class="step-label" id="current-step-label">Step 1 of 5: Personal & Academic Background</span>
+                        <span class="step-count" id="progress-percent-label">20% Completed</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="progress-bar-fill" style="width: 20%;"></div>
+                    </div>
+                    
+                    <div class="step-indicators">
+                        <div class="step-dot active" data-step="1">1</div>
+                        <div class="step-dot" data-step="2">2</div>
+                        <div class="step-dot" data-step="3">3</div>
+                        <div class="step-dot" data-step="4">4</div>
+                        <div class="step-dot" data-step="5">5</div>
+                    </div>
+                </div>
+
+                <!-- FORM CONTAINER -->
+                <form id="assessment-form" novalidate>
+                    <!-- STEP 1: Personal & Academic Information -->
+                    <div class="assessment-step" id="step-1">
+                        <h2 class="step-heading">Personal & Academic Foundation</h2>
+                        <p class="step-subheading">Tell us about your educational background and the subjects that inspire your curiosity.</p>
+
+                        <div class="form-group">
+                            <label for="student-name" class="form-label">
+                                Full Name <span class="required">*</span>
+                            </label>
+                            <input type="text" id="student-name" class="form-control" placeholder="e.g. Aarav Sharma" required>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="form-group">
+                                <label for="education-level" class="form-label">
+                                    Current Education Level <span class="required">*</span>
+                                </label>
+                                <select id="education-level" class="form-control" required>
+                                    <option value="">Select education level...</option>
+                                    <option value="10th Standard / High School">10th Standard / High School</option>
+                                    <option value="12th Standard / PUC / Intermediate">12th Standard / PUC / Intermediate</option>
+                                    <option value="Polytechnic / Diploma">Polytechnic / Diploma</option>
+                                    <option value="Undergraduate Degree (Pursuing / Completed)">Undergraduate Degree (Pursuing / Completed)</option>
+                                    <option value="Postgraduate Degree (Pursuing / Completed)">Postgraduate Degree (Pursuing / Completed)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="academic-stream" class="form-label">
+                                    Academic Stream / Field <span class="required">*</span>
+                                </label>
+                                <select id="academic-stream" class="form-control" required>
+                                    <option value="">Select academic stream...</option>
+                                    <option value="Science (PCM - Physics, Chemistry, Maths)">Science (PCM - Physics, Chemistry, Maths)</option>
+                                    <option value="Science (PCB - Physics, Chemistry, Biology)">Science (PCB - Physics, Chemistry, Biology)</option>
+                                    <option value="Science (PCMB)">Science (PCMB)</option>
+                                    <option value="Computer Science / Engineering">Computer Science / Engineering</option>
+                                    <option value="Electronics / Core Engineering">Electronics / Core Engineering</option>
+                                    <option value="Commerce (with Mathematics / Statistics)">Commerce (with Mathematics / Statistics)</option>
+                                    <option value="Commerce (without Mathematics)">Commerce (without Mathematics)</option>
+                                    <option value="Arts / Humanities / Social Sciences">Arts / Humanities / Social Sciences</option>
+                                    <option value="Design / Media / Other">Design / Media / Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="current-qualification" class="form-label">
+                                Current Qualification / College / Year
+                            </label>
+                            <input type="text" id="current-qualification" class="form-control" placeholder="e.g. CBSE 12th Grade / B.Tech 2nd Year CSE">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                Favourite / Strongest Subjects (Select 1 or more) <span class="required">*</span>
+                            </label>
+                            <div class="chips-grid" id="favourite-subjects-grid">
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Mathematics">
+                                    <span class="chip-label"><i data-lucide="hash"></i> Mathematics</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Computer Science">
+                                    <span class="chip-label"><i data-lucide="code-2"></i> Computer Science</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Physics">
+                                    <span class="chip-label"><i data-lucide="atom"></i> Physics</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Statistics">
+                                    <span class="chip-label"><i data-lucide="bar-chart-2"></i> Statistics</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Economics">
+                                    <span class="chip-label"><i data-lucide="trending-up"></i> Economics</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Accountancy">
+                                    <span class="chip-label"><i data-lucide="receipt"></i> Accountancy</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Business Studies">
+                                    <span class="chip-label"><i data-lucide="briefcase"></i> Business Studies</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="English">
+                                    <span class="chip-label"><i data-lucide="book-a"></i> English</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Art/Design">
+                                    <span class="chip-label"><i data-lucide="palette"></i> Art / Design</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Biology">
+                                    <span class="chip-label"><i data-lucide="dna"></i> Biology</span>
+                                </label>
+                                <label class="chip-select">
+                                    <input type="checkbox" name="fav-subject" value="Chemistry">
+                                    <span class="chip-label"><i data-lucide="flask-conical"></i> Chemistry</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Interest Assessment -->
+                    <div class="assessment-step" id="step-2" style="display: none;">
+                        <h2 class="step-heading">Interest Exploration</h2>
+                        <p class="step-subheading">Select domains that genuinely excite your passion and curiosity (Pick at least 2).</p>
+
+                        <div class="chips-grid" id="interests-grid">
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Programming">
+                                <span class="chip-label"><i data-lucide="terminal"></i> Programming</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Mathematics">
+                                <span class="chip-label"><i data-lucide="binary"></i> Mathematics</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Artificial Intelligence">
+                                <span class="chip-label"><i data-lucide="brain-circuit"></i> Artificial Intelligence</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Data Analysis">
+                                <span class="chip-label"><i data-lucide="line-chart"></i> Data Analysis</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Designing">
+                                <span class="chip-label"><i data-lucide="palette"></i> Designing</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Business">
+                                <span class="chip-label"><i data-lucide="building-2"></i> Business</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Finance">
+                                <span class="chip-label"><i data-lucide="badge-dollar-sign"></i> Finance</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Cybersecurity">
+                                <span class="chip-label"><i data-lucide="shield-check"></i> Cybersecurity</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Electronics">
+                                <span class="chip-label"><i data-lucide="zap"></i> Electronics</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Research">
+                                <span class="chip-label"><i data-lucide="microscope"></i> Research</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Communication">
+                                <span class="chip-label"><i data-lucide="message-square"></i> Communication</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Management">
+                                <span class="chip-label"><i data-lucide="users"></i> Management</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Problem Solving">
+                                <span class="chip-label"><i data-lucide="puzzle"></i> Problem Solving</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="interest" value="Creativity">
+                                <span class="chip-label"><i data-lucide="sparkles"></i> Creativity</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Existing Skills (Interactive Rating 1 to 5) -->
+                    <div class="assessment-step" id="step-3" style="display: none;">
+                        <h2 class="step-heading">Existing Knowledge & Capabilities</h2>
+                        <p class="step-subheading">Rate your current comfort level from 1 (Novice) to 5 (Expert). Be completely honest — this pinpoints what makes you unique and what gaps to bridge.</p>
+
+                        <div class="skill-rating-list" id="skills-rating-container">
+                            <!-- Populated with JS for 12 skills -->
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Work Preferences -->
+                    <div class="assessment-step" id="step-4" style="display: none;">
+                        <h2 class="step-heading">Work Style & Daily Tasks</h2>
+                        <p class="step-subheading">What type of daily environment makes you feel most energized and productive? (Select 1 or more).</p>
+
+                        <div class="chips-grid" id="work-preferences-grid">
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Working with computers">
+                                <span class="chip-label"><i data-lucide="monitor"></i> Working with computers</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Working with data">
+                                <span class="chip-label"><i data-lucide="database"></i> Working with data</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Creating visual designs">
+                                <span class="chip-label"><i data-lucide="layout"></i> Creating visual designs</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Solving technical problems">
+                                <span class="chip-label"><i data-lucide="wrench"></i> Solving technical problems</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Working with people">
+                                <span class="chip-label"><i data-lucide="users"></i> Working with people</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Business and management">
+                                <span class="chip-label"><i data-lucide="briefcase"></i> Business and management</span>
+                            </label>
+                            <label class="chip-select">
+                                <input type="checkbox" name="work-pref" value="Research and innovation">
+                                <span class="chip-label"><i data-lucide="lightbulb"></i> Research and innovation</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Career Preferences & Confirmation -->
+                    <div class="assessment-step" id="step-5" style="display: none;">
+                        <h2 class="step-heading">Career Orientation</h2>
+                        <p class="step-subheading">Which broad professional direction feels like the best strategic fit for your future?</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                            <label class="chip-select">
+                                <input type="radio" name="career-pref" value="Technical career" checked>
+                                <span class="chip-label" style="justify-content: space-between; padding: 1.15rem 1.35rem;">
+                                    <span><i data-lucide="cpu"></i> <strong>Technical career</strong> (Software, Data, AI, Cloud, Cybersecurity, Hardware)</span>
+                                    <i data-lucide="check" class="check-icon"></i>
+                                </span>
+                            </label>
+
+                            <label class="chip-select">
+                                <input type="radio" name="career-pref" value="Creative career">
+                                <span class="chip-label" style="justify-content: space-between; padding: 1.15rem 1.35rem;">
+                                    <span><i data-lucide="palette"></i> <strong>Creative career</strong> (UI/UX Design, Interaction Design, Digital Marketing)</span>
+                                    <i data-lucide="check" class="check-icon"></i>
+                                </span>
+                            </label>
+
+                            <label class="chip-select">
+                                <input type="radio" name="career-pref" value="Business career">
+                                <span class="chip-label" style="justify-content: space-between; padding: 1.15rem 1.35rem;">
+                                    <span><i data-lucide="trending-up"></i> <strong>Business career</strong> (Business Analytics, Financial Markets, Product Management)</span>
+                                    <i data-lucide="check" class="check-icon"></i>
+                                </span>
+                            </label>
+
+                            <label class="chip-select">
+                                <input type="radio" name="career-pref" value="Research career">
+                                <span class="chip-label" style="justify-content: space-between; padding: 1.15rem 1.35rem;">
+                                    <span><i data-lucide="microscope"></i> <strong>Research career</strong> (Data Science Labs, Academic Research, Scientific Innovation)</span>
+                                    <i data-lucide="check" class="check-icon"></i>
+                                </span>
+                            </label>
+
+                            <label class="chip-select">
+                                <input type="radio" name="career-pref" value="Flexible / Undecided">
+                                <span class="chip-label" style="justify-content: space-between; padding: 1.15rem 1.35rem;">
+                                    <span><i data-lucide="compass"></i> <strong>Flexible / Undecided</strong> (Open to exploring whatever aligns best with my skills)</span>
+                                    <i data-lucide="check" class="check-icon"></i>
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Summary Confirmation Box -->
+                        <div style="background: rgba(239, 246, 255, 0.85); border: 1px solid #bfdbfe; border-radius: var(--radius-lg); padding: 1.5rem; backdrop-filter: blur(8px);">
+                            <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+                                <i data-lucide="shield-check" style="color: var(--primary); flex-shrink: 0; margin-top: 3px;"></i>
+                                <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                                    <strong>Ready to compute matches:</strong> Your responses will be evaluated using our transparent 5-dimension algorithm (Interest 35%, Skills 30%, Subjects 15%, Work Pref 10%, Career Pref 10%). Responses are saved locally on your device.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Action Buttons -->
+                    <div class="assessment-actions">
+                        <button type="button" id="btn-prev-step" class="btn btn-secondary" style="visibility: hidden;">
+                            <i data-lucide="arrow-left"></i> <span>Previous</span>
+                        </button>
+
+                        <div style="display: flex; gap: 0.85rem;">
+                            <button type="button" id="btn-reset-form" class="btn btn-ghost btn-sm" title="Clear all responses">
+                                <i data-lucide="rotate-ccw"></i> Reset
+                            </button>
+                            <button type="button" id="btn-next-step" class="btn btn-primary btn-magnetic-hero">
+                                <span>Next Step</span> <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All calculations run client-side via LocalStorage.</p>
+            <p><a href="index.html">Back to Home</a> • <a href="careers.html">Explore Careers</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/careers-data.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/assessment.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

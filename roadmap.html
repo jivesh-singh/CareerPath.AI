@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Learning Roadmap - CareerPath AI</title>
+    <meta name="description" content="Adaptive 5-stage career roadmaps from fundamentals to career placement that adjust dynamically around your existing skillset.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link">Assessment</a></li>
+                    <li><a href="careers.html" class="nav-link">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link active">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <a href="assessment.html" class="btn btn-primary dynamic-assessment-cta">
+                    <i data-lucide="sparkles"></i> <span>Start Assessment</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container section-sm">
+        <!-- Roadmap Top Controller Banner -->
+        <div class="results-header-banner" style="margin-bottom: 2rem;">
+            <div>
+                <span class="badge badge-primary" style="margin-bottom: 0.75rem;">
+                    <i data-lucide="route"></i> Adaptive Skill Progression
+                </span>
+                <h1 style="font-size: 2.1rem; margin-bottom: 0.5rem;" id="roadmap-heading-title">
+                    5-Stage Learning Roadmap
+                </h1>
+                <p style="font-size: 1rem; color: var(--text-secondary); max-width: 680px;" id="roadmap-heading-desc">
+                    Adapts dynamically to your existing assessment ratings. Track your progress milestone by milestone across fundamentals, technical tools, real projects, portfolios, and interview prep.
+                </p>
+            </div>
+
+            <div style="min-width: 260px;">
+                <label for="career-select-dropdown" class="form-label" style="font-size: 0.85rem; color: var(--text-muted);">
+                    Select Career Roadmap:
+                </label>
+                <select id="career-select-dropdown" class="form-control" style="background: #ffffff; font-weight: 600;">
+                    <!-- Populated dynamically with all 15 careers -->
+                </select>
+            </div>
+        </div>
+
+        <!-- Student Progress Indicator -->
+        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 1.5rem 2rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                    <h3 style="font-size: 1.15rem; margin-bottom: 2px;">Your Milestone Progress</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);" id="progress-subtext">
+                        Check off completed tasks as you build competencies.
+                    </p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 1.5rem; font-weight: 800; color: var(--primary);" id="roadmap-percent-display">0%</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted); display: block;" id="roadmap-count-display">0 of 0 Completed</span>
+                </div>
+            </div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="roadmap-progress-bar" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- 5 STAGES TIMELINE -->
+        <div id="roadmap-stages-wrapper">
+            <!-- Populated dynamically via js/roadmap.js -->
+        </div>
+
+        <!-- Bottom Actions & External Resources Recommendation -->
+        <div style="background: var(--bg-alt); border: 1px solid #bfdbfe; border-radius: var(--radius-xl); padding: 2rem; margin-top: 3.5rem; text-align: center;">
+            <i data-lucide="book-open" style="width: 40px; height: 40px; color: var(--primary); margin: 0 auto 0.75rem auto;"></i>
+            <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Need Free Official Courses to Master These Milestones?</h3>
+            <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.5rem auto; font-size: 0.95rem;">
+                Explore verified, government-accredited and industry-sponsored courses from NPTEL, SWAYAM, freeCodeCamp, Microsoft Learn, and Google Cloud Boost.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="resources.html" class="btn btn-primary">
+                    <i data-lucide="external-link"></i> <span>Explore Official Free Resources</span>
+                </a>
+                <a href="careers.html" class="btn btn-secondary">
+                    <i data-lucide="grid"></i> <span>Explore Other Careers</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All roadmap progress saved locally on your browser.</p>
+            <p><a href="assessment.html">Take Assessment</a> • <a href="results.html">View Results Dashboard</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/careers-data.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/roadmap.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

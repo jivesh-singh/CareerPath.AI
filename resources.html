@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Verified Learning Resources - CareerPath AI</title>
+    <meta name="description" content="Curated official, free and government-accredited learning platforms including SWAYAM, NPTEL, freeCodeCamp, Microsoft Learn, Cisco, Google Cloud, and Kaggle.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link">Assessment</a></li>
+                    <li><a href="careers.html" class="nav-link">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link active">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <a href="assessment.html" class="btn btn-primary dynamic-assessment-cta">
+                    <i data-lucide="sparkles"></i> <span>Start Assessment</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container section-sm">
+        <div class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
+            <span class="section-tag"><i data-lucide="book-open"></i> Verified Learning Portals</span>
+            <h1 class="section-title">Official & Free Learning Platforms</h1>
+            <p class="section-desc">You don't need expensive paid bootcamps to master technical skills. These verified official platforms offer free curricula, university credits, and industry certifications.</p>
+        </div>
+
+        <!-- Resources Grid -->
+        <div class="category-grid" style="grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 2rem;">
+            
+            <!-- 1. SWAYAM -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: var(--primary-light); color: var(--primary);">
+                                <i data-lucide="landmark"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">SWAYAM</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Ministry of Education, Govt of India</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-success">Govt Accredited</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Initiated by the Government of India, SWAYAM offers university-grade online courses from Class 9 up to post-graduation. Academic credits can be transferred directly to Indian university marksheets via the UGC Academic Bank of Credits (ABC).
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Computer Science, Engineering, Mathematics, Management, Commerce, Data Analysis.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">100% Free Learning</span>
+                    <a href="https://swayam.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit SWAYAM</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. NPTEL -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: var(--accent-light); color: var(--accent);">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">NPTEL</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">IITs (Madras, Bombay, Delhi) & IISc</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-accent">IIT & IISc Faculty</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        National Programme on Technology Enhanced Learning (NPTEL) offers premier engineering and sciences courses taught by IIT and IISc professors. Free video lectures, assignments, and optional proctored exams for official certificates.
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Data Structures & Algorithms, Machine Learning, VLSI, Robotics, Electrical Engineering, Deep Learning.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">100% Free Courses</span>
+                    <a href="https://nptel.ac.in/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit NPTEL</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. freeCodeCamp -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: #ecfdf5; color: #059669;">
+                                <i data-lucide="code-2"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">freeCodeCamp</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">501(c)(3) Non-Profit Education</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-success">Free Certificates</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        A world-renowned donor-supported coding curriculum. Learn by building real web projects directly in your browser. Complete 5 mandatory projects per course to earn verified credentials recognized globally by software employers.
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Responsive Web Design, JavaScript Algorithms, Front End Development Libraries, Python for Data Analysis.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">100% Free Forever</span>
+                    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit freeCodeCamp</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. Microsoft Learn -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: var(--primary-light); color: var(--primary);">
+                                <i data-lucide="terminal"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">Microsoft Learn</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Microsoft Corporation</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-primary">Industry Sandbox</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Official interactive learning platform from Microsoft with hands-on free cloud sandboxes. Follow role-based pathways for Azure Cloud Engineers, Data Analysts (Power BI), AI Engineers, and Cybersecurity Analysts.
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Azure Fundamentals, Power BI Data Analyst (PL-300), Python on Azure, C# Programming, Security Operations.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">Free Interactive Labs</span>
+                    <a href="https://learn.microsoft.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit Microsoft Learn</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 5. Cisco Networking Academy -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: var(--info-bg); color: var(--info);">
+                                <i data-lucide="shield"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">Cisco Networking Academy</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Cisco Systems Skills For All</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-slate">Cyber & Networks</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Cisco's official global educational initiative provides free self-paced courses in computer networking, cybersecurity fundamentals, packet analysis, and Python programming with official digital badges.
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Cybersecurity Essentials, Packet Tracer Simulation, Networking Basics, Linux Unhatched, Ethical Hacking Basics.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">Free Badges & Labs</span>
+                    <a href="https://www.netacad.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit Cisco NetAcad</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6. Google Cloud Skills Boost -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: var(--primary-light); color: var(--primary);">
+                                <i data-lucide="cloud"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">Google Cloud Skills Boost</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Google Cloud</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-primary">Cloud & GenAI</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Direct interactive lab training from Google Cloud. Offers introductory Generative AI courses, Cloud Architecture fundamentals, BigQuery data warehousing, and Kubernetes deployment tracks.
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Introduction to GenAI, Large Language Models (LLMs), BigQuery SQL, Cloud Engineer Learning Paths.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">Official Google Badges</span>
+                    <a href="https://www.cloudskillsboost.google/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit Google Cloud Boost</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 7. Kaggle Learn -->
+            <div class="category-card" style="box-shadow: var(--shadow-md);">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="category-icon" style="background: var(--warning-bg); color: var(--warning);">
+                                <i data-lucide="brain"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.25rem;">Kaggle Learn</h3>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Kaggle / Google</span>
+                            </div>
+                        </div>
+                        <span class="badge badge-warning">Data Science</span>
+                    </div>
+
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Bite-sized, practical hands-on micro-courses designed to get you writing production machine learning code in hours. Includes free Jupyter cloud notebooks with high-end GPU acceleration.
+                    </p>
+
+                    <div style="background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.825rem; margin-bottom: 1.25rem;">
+                        <strong>Key Disciplines:</strong> Pandas, Intermediate Machine Learning, Intro to Deep Learning, Feature Engineering, SQL, Computer Vision.
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.825rem; color: var(--success); font-weight: 600;">Free GPU Notebooks</span>
+                    <a href="https://www.kaggle.com/learn" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                        <span>Visit Kaggle Learn</span> <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="disclaimer-banner" style="margin-top: 3.5rem;">
+            <i data-lucide="check-check" style="flex-shrink: 0;"></i>
+            <div>
+                <strong>Curator's Guarantee:</strong> All linked websites are official, verifiable resources maintained by government bodies, top academic universities, or leading tech institutions. None require paid memberships to complete the core learning materials.
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All rights reserved.</p>
+            <p><a href="index.html">Home</a> • <a href="assessment.html">Take Assessment</a> • <a href="careers.html">Explore Careers</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Recommendations Dashboard - CareerPath AI</title>
+    <meta name="description" content="Personalized AI-powered career recommendations with transparent match scores, skill gap analysis, and tailored 5-stage learning roadmaps.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+    <!-- Print-only header for clean PDF export -->
+    <div class="print-only-header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>CareerPath AI - Official Student Career Report</h1>
+                <p id="print-student-info" style="font-size: 11pt; color: #334155; margin-top: 4px;">Student Evaluation Report</p>
+            </div>
+            <div style="text-align: right; font-size: 10pt; color: #64748b;">
+                <p id="print-date">Generated on: </p>
+                <p>Transparent Heuristic AI Evaluation</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link">Assessment</a></li>
+                    <li><a href="results.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="careers.html" class="nav-link">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <button type="button" id="btn-print-report" class="btn btn-secondary btn-sm" title="Download or print career report as PDF">
+                    <i data-lucide="printer"></i> <span>Download Report (PDF)</span>
+                </button>
+                <a href="assessment.html" class="btn btn-primary btn-sm">
+                    <i data-lucide="rotate-ccw"></i> <span>Retake Assessment</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container section-sm">
+        <!-- If no assessment found, prompt to take assessment -->
+        <div id="no-assessment-warning" style="display: none; text-align: center; padding: 4rem 1.5rem; background: #ffffff; border-radius: var(--radius-xl); border: 1px solid var(--border-color); margin: 2rem 0;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--bg-alt); color: var(--primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
+                <i data-lucide="clipboard-x" style="width: 32px; height: 32px;"></i>
+            </div>
+            <h2 style="margin-bottom: 0.75rem;">No Assessment Found</h2>
+            <p style="max-width: 520px; margin: 0 auto 2rem auto; color: var(--text-secondary);">
+                You haven't completed the career assessment yet. Take our quick 5-minute assessment to unlock personalized recommendations and learning roadmaps.
+            </p>
+            <a href="assessment.html" class="btn btn-primary btn-lg">
+                <i data-lucide="sparkles"></i> <span>Take Career Assessment Now</span>
+            </a>
+        </div>
+
+        <!-- DASHBOARD CONTAINER -->
+        <div id="dashboard-content">
+            <!-- Personalized Greeting Banner -->
+            <div class="results-header-banner">
+                <div class="results-user-greeting">
+                    <span class="badge badge-primary" style="margin-bottom: 0.75rem;">
+                        <i data-lucide="check-circle-2"></i> Assessment Complete
+                    </span>
+                    <h1 style="font-size: 2.1rem; margin-bottom: 0.5rem;" id="greeting-title">
+                        Welcome, <span class="text-gradient" id="user-display-name">Student</span>!
+                    </h1>
+                    <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.75rem;" id="user-display-profile-meta">
+                        Education: Loading... • Stream: Loading...
+                    </p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        Based on your interest alignment (35%), current technical skills (30%), academic subjects (15%), work style (10%), and career preference (10%), here are your top recommended career paths.
+                    </p>
+                </div>
+
+                <div class="results-actions-top">
+                    <button type="button" class="btn btn-secondary btn-sm" id="btn-edit-profile-trigger">
+                        <i data-lucide="user-pen"></i> <span>Edit Profile</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btn-retake-assessment">
+                        <i data-lucide="rotate-ccw"></i> <span>Retake</span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btn-print-action">
+                        <i data-lucide="file-down"></i> <span>Download PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top 5 Recommended Careers Section -->
+            <div style="margin-bottom: 3rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <span class="section-tag"><i data-lucide="award"></i> Top Recommendations</span>
+                        <h2 style="font-size: 1.85rem;">Your Top 5 Career Matches</h2>
+                    </div>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">
+                        Ranked dynamically by weighted heuristic compatibility
+                    </span>
+                </div>
+
+                <div class="career-matches-grid" id="top-matches-container">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Skill Strengths and Growth Areas Analysis -->
+            <div style="margin-bottom: 3.5rem;">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <span class="section-tag"><i data-lucide="activity"></i> Skill Profile Diagnostics</span>
+                    <h2 class="section-title">Your Technical Strengths & Growth Areas</h2>
+                    <p class="section-desc">Understand where your baseline competencies are already strong, and where upskilling will maximize your career trajectory.</p>
+                </div>
+
+                <div class="skills-analysis-grid">
+                    <!-- Current Strengths -->
+                    <div class="analysis-card">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+                            <div style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--success-bg); color: var(--success); display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="check-check"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.15rem;">Current Skill Strengths</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Skills rated 4 (Proficient) or 5 (Expert)</p>
+                            </div>
+                        </div>
+                        <div id="skill-strengths-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Skills to Develop -->
+                    <div class="analysis-card">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+                            <div style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.15rem;">Priority Skills to Bridge</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Essential competencies needed for your #1 career match</p>
+                            </div>
+                        </div>
+                        <div id="skill-gaps-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Ranked Careers (6-15) Expandable Preview -->
+            <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 3.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" id="toggle-other-careers-header">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i data-lucide="list-ordered" style="color: var(--primary);"></i>
+                        <div>
+                            <h3 style="font-size: 1.2rem;">View Other Ranked Careers (#6 to #15)</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">See how remaining disciplines scored across your responses</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btn-toggle-other-careers">
+                        <span>Show All</span> <i data-lucide="chevron-down"></i>
+                    </button>
+                </div>
+
+                <div id="other-careers-container" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Legal/Educational Disclaimer Banner -->
+            <div class="disclaimer-banner">
+                <i data-lucide="info" style="flex-shrink: 0;"></i>
+                <div>
+                    <strong>Guidance Disclaimer:</strong> CareerPath AI provides educational exploration and guidance based on weighted heuristic evaluation. It does not guarantee employment, academic admission, or career outcomes. Every career path offers diverse lateral opportunities and non-linear progressions.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- EDIT PROFILE MODAL -->
+    <div id="edit-profile-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem;">
+        <div style="background: #ffffff; width: 100%; max-width: 520px; border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-xl); position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.25rem;">Edit Student Profile</h3>
+                <button type="button" id="btn-close-modal" class="btn btn-ghost btn-sm" style="padding: 0.25rem 0.5rem;">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label for="edit-name" class="form-label">Full Name</label>
+                    <input type="text" id="edit-name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-education" class="form-label">Education Level</label>
+                    <select id="edit-education" class="form-control" required>
+                        <option value="10th Standard / High School">10th Standard / High School</option>
+                        <option value="12th Standard / PUC / Intermediate">12th Standard / PUC / Intermediate</option>
+                        <option value="Polytechnic / Diploma">Polytechnic / Diploma</option>
+                        <option value="Undergraduate Degree (Pursuing / Completed)">Undergraduate Degree (Pursuing / Completed)</option>
+                        <option value="Postgraduate Degree (Pursuing / Completed)">Postgraduate Degree (Pursuing / Completed)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-stream" class="form-label">Academic Stream</label>
+                    <select id="edit-stream" class="form-control" required>
+                        <option value="Science (PCM - Physics, Chemistry, Maths)">Science (PCM - Physics, Chemistry, Maths)</option>
+                        <option value="Science (PCB - Physics, Chemistry, Biology)">Science (PCB - Physics, Chemistry, Biology)</option>
+                        <option value="Science (PCMB)">Science (PCMB)</option>
+                        <option value="Computer Science / Engineering">Computer Science / Engineering</option>
+                        <option value="Electronics / Core Engineering">Electronics / Core Engineering</option>
+                        <option value="Commerce (with Mathematics / Statistics)">Commerce (with Mathematics / Statistics)</option>
+                        <option value="Commerce (without Mathematics)">Commerce (without Mathematics)</option>
+                        <option value="Arts / Humanities / Social Sciences">Arts / Humanities / Social Sciences</option>
+                        <option value="Design / Media / Other">Design / Media / Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-qualification" class="form-label">Current Qualification</label>
+                    <input type="text" id="edit-qualification" class="form-control">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" id="btn-cancel-modal" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Print Only Footer -->
+    <div class="print-only-footer">
+        <p>CareerPath AI • Educational Career Guidance Report • Generated via https://careerpath-ai.netlify.app</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All recommendations calculated via deterministic weighted evaluation.</p>
+            <p><a href="assessment.html">Retake Assessment</a> • <a href="careers.html">Explore All Careers</a> • <a href="resources.html">Learning Resources</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/careers-data.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/results.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

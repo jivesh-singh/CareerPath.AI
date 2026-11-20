@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Profile - CareerPath AI</title>
+    <meta name="description" content="In-depth career profile with India-relevant educational pathways, daily responsibilities, beginner projects, certifications, and progression roadmap.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link">Assessment</a></li>
+                    <li><a href="careers.html" class="nav-link active">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <a href="careers.html" class="btn btn-secondary btn-sm">
+                    <i data-lucide="arrow-left"></i> <span>All Careers</span>
+                </a>
+                <a href="assessment.html" class="btn btn-primary dynamic-assessment-cta">
+                    <i data-lucide="sparkles"></i> <span>Start Assessment</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Career Hero Banner -->
+        <section class="career-hero">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 1.5rem; align-items: center;">
+                        <div class="career-icon-lg" style="width: 72px; height: 72px; border-radius: var(--radius-xl); font-size: 1.8rem;" id="hero-career-icon">
+                            <i data-lucide="briefcase"></i>
+                        </div>
+                        <div>
+                            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                                <span class="badge badge-primary" id="hero-career-category">Technology</span>
+                                <span class="badge badge-success" id="hero-match-badge" style="display: none;">
+                                    <i data-lucide="sparkles"></i> 92% Match for You
+                                </span>
+                            </div>
+                            <h1 style="font-size: 2.4rem; margin-bottom: 0.35rem;" id="hero-career-name">Career Title</h1>
+                            <p style="font-size: 1.1rem; color: var(--text-secondary);" id="hero-career-tagline">Tagline loading...</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                        <a href="#" id="btn-view-roadmap" class="btn btn-primary">
+                            <i data-lucide="map"></i> <span>Interactive Roadmap</span>
+                        </a>
+                        <a href="#" id="btn-compare-this" class="btn btn-secondary">
+                            <i data-lucide="columns-2"></i> <span>Compare Career</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="container section-sm">
+            <!-- Personalized Student Growth Alert (If student assessment exists) -->
+            <div id="personalized-skills-box" style="display: none; background: var(--bg-alt); border: 1px solid #bfdbfe; border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem;">
+                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i data-lucide="user-check"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Personalized for <span id="student-name-target">You</span></h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                            Here is our recommendation on <strong>what skills you should learn next</strong> based on your current assessment rating:
+                        </p>
+                        <div id="personalized-skills-list" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="career-grid-sections">
+                <!-- Left Main Column -->
+                <div class="career-main-content">
+                    <!-- 1. Overview & 2. What Does This Professional Do -->
+                    <div class="detail-section-card">
+                        <h2 class="detail-section-title">
+                            <i data-lucide="info" style="color: var(--primary);"></i>
+                            1. Career Overview & Day-to-Day Responsibilities
+                        </h2>
+                        <p id="career-desc-full" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.65;"></p>
+                        
+                        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--text-primary);">
+                            What does this professional do?
+                        </h4>
+                        <p id="career-day-to-day" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;"></p>
+                    </div>
+
+                    <!-- 3 to 7: Comprehensive Educational Pathways (India Context) -->
+                    <div class="detail-section-card">
+                        <h2 class="detail-section-title">
+                            <i data-lucide="graduation-cap" style="color: var(--accent);"></i>
+                            Educational Qualifications & Admission Routes (India Context)
+                        </h2>
+
+                        <!-- Mandatory vs Preferred vs Alternative -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="font-size: 0.95rem; color: var(--primary); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+                                <i data-lucide="shield-alert" style="width: 16px; height: 16px;"></i> Statutory / Mandatory Requirement
+                            </h4>
+                            <p id="edu-mandatory" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;"></p>
+
+                            <h4 style="font-size: 0.95rem; color: var(--success); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+                                <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Commonly Preferred Qualifications
+                            </h4>
+                            <p id="edu-preferred" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;"></p>
+
+                            <h4 style="font-size: 0.95rem; color: var(--warning); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem;">
+                                <i data-lucide="git-branch" style="width: 16px; height: 16px;"></i> Alternative & Non-Traditional Pathways
+                            </h4>
+                            <p id="edu-alternative" style="font-size: 0.9rem; color: var(--text-secondary);"></p>
+                        </div>
+
+                        <!-- School Subjects & Undergrad Degrees -->
+                        <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem; margin-top: 1.25rem;">
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Relevant School Subjects (10th / 12th)</h4>
+                            <p id="edu-school-subjects" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;"></p>
+
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Suitable Undergraduate Degrees</h4>
+                            <ul id="edu-undergrad-list" style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;"></ul>
+
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Typical Postgraduate Options</h4>
+                            <ul id="edu-postgrad-list" style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;"></ul>
+
+                            <h4 style="font-size: 1rem; margin-bottom: 0.5rem;">Entrance Exams & Admission Routes</h4>
+                            <ul id="edu-exams-list" style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);"></ul>
+                        </div>
+                    </div>
+
+                    <!-- 10. Beginner-to-Advanced Learning Roadmap Overview -->
+                    <div class="detail-section-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                            <h2 style="font-size: 1.25rem; display: flex; align-items: center; gap: 0.65rem;">
+                                <i data-lucide="map" style="color: var(--primary);"></i>
+                                5-Stage Learning Roadmap
+                            </h2>
+                            <a href="#" id="link-full-roadmap" class="btn btn-outline btn-sm">Full Interactive Roadmap</a>
+                        </div>
+                        
+                        <div class="roadmap-timeline" id="roadmap-preview-timeline">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- 11. Suggested Beginner Projects -->
+                    <div class="detail-section-card">
+                        <h2 class="detail-section-title">
+                            <i data-lucide="folder-git-2" style="color: var(--success);"></i>
+                            Suggested Beginner & Intermediate Projects
+                        </h2>
+                        <div id="projects-list-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- 15. Career Progression & 16. Future Opportunities -->
+                    <div class="detail-section-card">
+                        <h2 class="detail-section-title">
+                            <i data-lucide="trending-up" style="color: var(--primary);"></i>
+                            Career Progression & Future Outlook
+                        </h2>
+                        
+                        <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">Typical Career Progression Ladder</h4>
+                        <div style="background: var(--bg-alt); padding: 1rem; border-radius: var(--radius-md); font-weight: 600; color: var(--primary); font-size: 0.95rem; margin-bottom: 1.25rem;" id="career-progression-text"></div>
+
+                        <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">Industry Demand & GenAI Future Impact</h4>
+                        <p id="career-future-text" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;"></p>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar Column -->
+                <div class="career-sidebar">
+                    <!-- 8 & 9. Required Technical & Soft Skills -->
+                    <div class="detail-section-card">
+                        <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="wrench" style="color: var(--primary);"></i> Technical Skills Required
+                        </h3>
+                        <div class="category-tags" id="sidebar-tech-skills" style="margin-bottom: 1.5rem;"></div>
+
+                        <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="heart-handshake" style="color: var(--accent);"></i> Soft Skills Required
+                        </h3>
+                        <div class="category-tags" id="sidebar-soft-skills"></div>
+                    </div>
+
+                    <!-- 12. Recommended Industry Certifications -->
+                    <div class="detail-section-card">
+                        <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="award" style="color: var(--warning);"></i> Recognized Certifications
+                        </h3>
+                        <div id="sidebar-certs-list" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+                    </div>
+
+                    <!-- 13. Internship Opportunities -->
+                    <div class="detail-section-card">
+                        <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="briefcase" style="color: var(--info);"></i> Finding Internships
+                        </h3>
+                        <p id="sidebar-internships-text" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;"></p>
+                    </div>
+
+                    <!-- 14. Possible Job Roles -->
+                    <div class="detail-section-card">
+                        <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="user-plus" style="color: var(--success);"></i> Possible Entry Roles
+                        </h3>
+                        <ul id="sidebar-roles-list" style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All rights reserved.</p>
+            <p><a href="careers.html">Back to All Careers</a> • <a href="assessment.html">Take Assessment</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/careers-data.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCareerDetail();
+        });
+
+        function loadCareerDetail() {
+            if (!window.CareersData) return;
+
+            // Get ID from URL parameter e.g. career.html?id=data-analyst
+            const params = new URLSearchParams(window.location.search);
+            let careerId = params.get('id');
+
+            // Default to top match or first career if missing
+            if (!careerId) {
+                const results = window.StorageService ? window.StorageService.getResults() : null;
+                if (results && results.results && results.results.length > 0) {
+                    careerId = results.results[0].id;
+                } else {
+                    careerId = 'data-analyst';
+                }
+            }
+
+            const career = window.CareersData.getById(careerId);
+            if (!career) {
+                alert('Career not found. Redirecting to careers directory.');
+                window.location.href = 'careers.html';
+                return;
+            }
+
+            document.title = `${career.name} - Career Profile | CareerPath AI`;
+
+            // Populate Hero
+            document.getElementById('hero-career-name').textContent = career.name;
+            document.getElementById('hero-career-tagline').textContent = career.tagline;
+            document.getElementById('hero-career-category').textContent = career.category;
+            
+            const iconEl = document.getElementById('hero-career-icon');
+            if (iconEl) iconEl.innerHTML = `<i data-lucide="${career.icon || 'briefcase'}"></i>`;
+
+            // Roadmap and Compare links
+            document.getElementById('btn-view-roadmap').setAttribute('href', `roadmap.html?career=${career.id}`);
+            document.getElementById('link-full-roadmap').setAttribute('href', `roadmap.html?career=${career.id}`);
+            document.getElementById('btn-compare-this').setAttribute('href', `compare.html?career1=${career.id}`);
+
+            // Check if student assessment exists for personalized score & "what to learn next"
+            const assessment = window.StorageService ? window.StorageService.getAssessment() : null;
+            if (assessment && window.RecommendationEngine) {
+                const results = window.RecommendationEngine.evaluate(assessment);
+                const currentMatch = results.find(r => r.id === career.id);
+                
+                if (currentMatch) {
+                    const matchBadge = document.getElementById('hero-match-badge');
+                    if (matchBadge) {
+                        matchBadge.style.display = 'inline-flex';
+                        matchBadge.innerHTML = `<i data-lucide="sparkles"></i> ${currentMatch.matchScore}% Match for You`;
+                    }
+
+                    // Render Personalized Skills YOU Should Learn Next (Section 17)
+                    const pBox = document.getElementById('personalized-skills-box');
+                    const sName = document.getElementById('student-name-target');
+                    const pList = document.getElementById('personalized-skills-list');
+
+                    if (pBox && currentMatch.skillGaps && currentMatch.skillGaps.length > 0) {
+                        pBox.style.display = 'block';
+                        if (sName) sName.textContent = assessment.personal.name || 'You';
+                        pList.innerHTML = '';
+                        currentMatch.skillGaps.forEach(g => {
+                            const badge = document.createElement('span');
+                            badge.className = 'badge badge-primary';
+                            badge.style.padding = '0.4rem 0.8rem';
+                            badge.style.fontSize = '0.85rem';
+                            badge.innerHTML = `<strong>${g.name}</strong> (Target ${g.targetLevel}/5 • Current ${g.userRating}/5)`;
+                            pList.appendChild(badge);
+                        });
+                    }
+                }
+            }
+
+            // 1 & 2: Overview & Day-to-Day
+            document.getElementById('career-desc-full').textContent = career.description;
+            document.getElementById('career-day-to-day').textContent = career.dayToDay;
+
+            // 3 to 7: Academic Profile
+            const ac = career.academicProfile || {};
+            document.getElementById('edu-mandatory').textContent = ac.mandatory || 'No single statutory license required.';
+            document.getElementById('edu-preferred').textContent = ac.preferred || 'Bachelor degree in relevant quantitative field.';
+            document.getElementById('edu-alternative').textContent = ac.alternativeRoutes || 'Demonstrated project portfolios and verified certifications.';
+            document.getElementById('edu-school-subjects').textContent = ac.schoolSubjects || 'Class 10/12 with Mathematics/Science/Commerce.';
+
+            const undergradList = document.getElementById('edu-undergrad-list');
+            undergradList.innerHTML = (ac.undergraduateDegrees || []).map(d => `<li>${d}</li>`).join('');
+
+            const postgradList = document.getElementById('edu-postgrad-list');
+            postgradList.innerHTML = (ac.postgraduateOptions || []).map(d => `<li>${d}</li>`).join('');
+
+            const examsList = document.getElementById('edu-exams-list');
+            examsList.innerHTML = (ac.admissionAndExams || []).map(d => `<li>${d}</li>`).join('');
+
+            // 10: 5-Stage Learning Roadmap preview
+            const roadmapPreview = document.getElementById('roadmap-preview-timeline');
+            roadmapPreview.innerHTML = '';
+            (career.learningRoadmap || []).forEach(stage => {
+                const node = document.createElement('div');
+                node.className = 'roadmap-stage-node';
+                node.innerHTML = `
+                    <div class="roadmap-stage-dot"></div>
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                            <strong style="font-size: 1rem; color: var(--text-primary);">${stage.title}</strong>
+                            <span class="badge badge-slate">${stage.duration}</span>
+                        </div>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${stage.description}</p>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                            ${(stage.skills || []).map(s => `<span class="badge badge-primary">${s}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                roadmapPreview.appendChild(node);
+            });
+
+            // 11: Beginner Projects
+            const projectsContainer = document.getElementById('projects-list-container');
+            projectsContainer.innerHTML = '';
+            (career.beginnerProjects || []).forEach(proj => {
+                const pCard = document.createElement('div');
+                pCard.style.cssText = `
+                    background: var(--bg-main);
+                    border: 1px solid var(--border-color);
+                    border-radius: var(--radius-md);
+                    padding: 1.25rem;
+                `;
+                pCard.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <strong style="font-size: 1rem;">${proj.title}</strong>
+                        <span class="badge ${proj.difficulty === 'Beginner' ? 'badge-success' : 'badge-warning'}">${proj.difficulty}</span>
+                    </div>
+                    <p style="font-size: 0.875rem; color: var(--text-secondary);">${proj.description}</p>
+                `;
+                projectsContainer.appendChild(pCard);
+            });
+
+            // 15 & 16: Progression & Future
+            document.getElementById('career-progression-text').textContent = career.careerProgression;
+            document.getElementById('career-future-text').textContent = career.futureOpportunities;
+
+            // Sidebar: Skills
+            const techContainer = document.getElementById('sidebar-tech-skills');
+            techContainer.innerHTML = (career.technicalSkills || []).map(s => `<span class="badge badge-primary" style="padding: 0.35rem 0.75rem;">${s}</span>`).join('');
+
+            const softContainer = document.getElementById('sidebar-soft-skills');
+            softContainer.innerHTML = (career.softSkills || []).map(s => `<span class="badge badge-accent" style="padding: 0.35rem 0.75rem;">${s}</span>`).join('');
+
+            // Sidebar: Certifications
+            const certsContainer = document.getElementById('sidebar-certs-list');
+            certsContainer.innerHTML = (career.certifications || []).map(c => `
+                <div style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-main);">
+                    <strong style="font-size: 0.875rem; display: block; color: var(--text-primary);">${c.name}</strong>
+                    <span style="font-size: 0.775rem; color: var(--text-muted);">${c.provider}</span>
+                </div>
+            `).join('');
+
+            // Sidebar: Internships & Roles
+            document.getElementById('sidebar-internships-text').textContent = career.internshipOpportunities;
+            
+            const rolesList = document.getElementById('sidebar-roles-list');
+            rolesList.innerHTML = (career.jobRoles || []).map(r => `<li>${r}</li>`).join('');
+
+            if (window.initLucideIcons) window.initLucideIcons();
+        }
+    </script>
+</body>
+</html>

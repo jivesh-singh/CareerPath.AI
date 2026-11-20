@@ -1,0 +1,386 @@
+/* ==========================================================================
+   CareerPath AI - Responsive & Print Stylesheet
+   Ultra-smooth responsiveness across Mobile, Tablet, and Desktop
+   Print: Clean, High-Contrast PDF output
+   ========================================================================== */
+
+/* Large Tablets & Small Desktops (<= 1024px) */
+@media (max-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-tag {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-features-list {
+        justify-content: center;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workflow-steps-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workflow-flow-line {
+        display: none;
+    }
+
+    .trust-visual-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .universe-visual-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.75rem;
+    }
+
+    .career-grid-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .glass-orb {
+        opacity: 0.4;
+    }
+}
+
+/* Medium Tablets & Mobile Landscape (<= 768px) */
+@media (max-width: 768px) {
+    h1 { font-size: 2.35rem; }
+    h2 { font-size: 1.85rem; }
+    h3 { font-size: 1.3rem; }
+
+    .hero-title {
+        font-size: 2.65rem;
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    /* Navbar Mobile Drawer */
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .navbar-nav {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.75rem 2rem;
+        gap: 1.35rem;
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-160%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    }
+
+    .navbar-nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-link {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+    }
+
+    .navbar-actions {
+        display: none;
+    }
+
+    .navbar-nav .mobile-action-btn {
+        display: block;
+        width: 100%;
+        margin-top: 0.75rem;
+    }
+
+    /* Assessment Multi-step */
+    .assessment-card {
+        padding: 1.75rem;
+    }
+
+    .chips-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    /* Results Header */
+    .results-header-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.85rem;
+    }
+
+    .results-actions-top {
+        width: 100%;
+    }
+
+    .results-actions-top .btn {
+        flex: 1;
+    }
+
+    .career-card-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .match-score-badge {
+        align-items: flex-start;
+        margin-top: 0.75rem;
+    }
+
+    .match-dimensions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-steps-horizontal {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-visual-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .universe-visual-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.95rem;
+        font-size: 0.85rem;
+    }
+
+    /* Disable tilt on mobile touch */
+    .hero-interactive-card,
+    .glass-panel,
+    .workflow-node,
+    .trust-visual-card,
+    .universe-card,
+    .step-card,
+    .feature-card,
+    .category-card,
+    .career-card-match {
+        transform: none !important;
+    }
+}
+
+/* Small Mobile Devices (<= 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding-left: 1.15rem;
+        padding-right: 1.15rem;
+    }
+
+    .hero-title {
+        font-size: 2.15rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.25rem;
+        text-align: center;
+    }
+
+    .assessment-actions {
+        flex-direction: column-reverse;
+        gap: 1.15rem;
+    }
+
+    .assessment-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Accessibility: Reduce motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .glass-orb {
+        animation: none !important;
+    }
+
+    #custom-cursor-dot, #custom-cursor-ring, #ambient-cursor-glow {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   Print Stylesheet (Optimized for Browser Print-to-PDF)
+   ========================================================================== */
+@media print {
+    body {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #000000 !important;
+        font-size: 11pt;
+    }
+
+    .navbar,
+    .site-footer,
+    .results-actions-top,
+    .assessment-actions,
+    .btn,
+    .filter-bar,
+    .disclaimer-banner,
+    .mobile-menu-toggle,
+    #scroll-progress-bar,
+    #ambient-cursor-glow,
+    #custom-cursor-dot,
+    #custom-cursor-ring,
+    .orb-container {
+        display: none !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .results-header-banner {
+        background: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        page-break-after: avoid;
+        padding: 1.5rem !important;
+        box-shadow: none !important;
+    }
+
+    .career-card-match {
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin-bottom: 1.5rem !important;
+        padding: 1.25rem !important;
+    }
+
+    .match-dimensions-grid {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+
+    .dimension-pill {
+        border: 1px solid #e2e8f0 !important;
+    }
+
+    .analysis-card {
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+
+    .skills-analysis-grid {
+        grid-template-columns: 1fr 1fr !important;
+        page-break-inside: avoid;
+    }
+
+    .print-only-header {
+        display: block !important;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #2563eb;
+        padding-bottom: 1rem;
+    }
+
+    .print-only-header h1 {
+        font-size: 20pt;
+        color: #2563eb !important;
+    }
+
+    .print-only-footer {
+        display: block !important;
+        margin-top: 2rem;
+        border-top: 1px solid #cbd5e1;
+        padding-top: 0.5rem;
+        font-size: 9pt;
+        color: #64748b;
+        text-align: center;
+    }
+}
+
+.print-only-header,
+.print-only-footer {
+    display: none;
+}

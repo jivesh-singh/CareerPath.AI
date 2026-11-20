@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore All 15 Career Paths - CareerPath AI</title>
+    <meta name="description" content="Explore 15 in-depth technical, creative, and business careers with India-specific educational pathways, beginner projects, and learning roadmaps.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Ambient 3D Floating Glass Orbs Background -->
+    <div class="orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="compass"></i>
+                </div>
+                <span>CareerPath <span class="text-gradient">AI</span></span>
+            </a>
+
+            <nav>
+                <ul class="navbar-nav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="assessment.html" class="nav-link">Assessment</a></li>
+                    <li><a href="careers.html" class="nav-link active">Explore Careers</a></li>
+                    <li><a href="roadmap.html" class="nav-link">Roadmaps</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar-actions">
+                <a href="assessment.html" class="btn btn-primary dynamic-assessment-cta">
+                    <i data-lucide="sparkles"></i> <span>Start Assessment</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container section-sm">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <span class="section-tag"><i data-lucide="compass"></i> Comprehensive Directory</span>
+            <h1 class="section-title">Explore 15 Modern Career Paths</h1>
+            <p class="section-desc">Search, filter, and inspect detailed profiles with curriculum, project blueprints, and India-relevant admission guidelines.</p>
+        </div>
+
+        <!-- Filter and Search Bar -->
+        <div class="filter-bar">
+            <div class="search-box-wrapper">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="career-search-input" class="search-input" placeholder="Search by career, skill (e.g. Python, SQL), or role...">
+            </div>
+
+            <div class="filter-pills" id="category-filter-pills">
+                <button type="button" class="filter-btn active" data-category="All">All Disciplines</button>
+                <button type="button" class="filter-btn" data-category="Data & Artificial Intelligence">Data & AI</button>
+                <button type="button" class="filter-btn" data-category="Software & Engineering">Software & Web</button>
+                <button type="button" class="filter-btn" data-category="Cybersecurity & Infrastructure">Cyber & Cloud</button>
+                <button type="button" class="filter-btn" data-category="Design & Creative Tech">Design & Marketing</button>
+                <button type="button" class="filter-btn" data-category="Business & Analytics">Business & Product</button>
+                <button type="button" class="filter-btn" data-category="Core Engineering & Robotics">Robotics & Hardware</button>
+                <button type="button" class="filter-btn" data-category="Applied Sciences & Research">Sciences & Research</button>
+            </div>
+        </div>
+
+        <!-- Careers Grid -->
+        <div class="category-grid" id="careers-grid-container" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.75rem;">
+            <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="no-careers-found" style="display: none; text-align: center; padding: 4rem 1rem;">
+            <i data-lucide="search-x" style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 1rem;"></i>
+            <h3>No careers matched your search</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Try searching for a different keyword or selecting 'All Disciplines'.</p>
+        </div>
+
+        <!-- Bottom Guidance Banner -->
+        <div class="disclaimer-banner" style="margin-top: 3.5rem;">
+            <i data-lucide="alert-circle" style="flex-shrink: 0;"></i>
+            <div>
+                <strong>Curriculum Note:</strong> Qualifications list commonly preferred and alternative non-traditional routes. No single entrance test or university degree is universally mandatory across all private industry roles.
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 CareerPath AI. All rights reserved.</p>
+            <p><a href="assessment.html">Take Assessment</a> • <a href="compare.html">Compare Careers</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/careers-data.js"></script>
+    <script src="js/recommendation.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initCareersExplorer();
+        });
+
+        function initCareersExplorer() {
+            if (!window.CAREERS_DATA) return;
+
+            let activeCategory = 'All';
+            let searchQuery = '';
+            
+            // Check if student assessment exists to display personalized match tags!
+            const assessment = window.StorageService ? window.StorageService.getAssessment() : null;
+            let userMatchMap = {};
+            if (assessment && window.RecommendationEngine) {
+                const results = window.RecommendationEngine.evaluate(assessment);
+                results.forEach(r => {
+                    userMatchMap[r.id] = r.matchScore;
+                });
+            }
+
+            const searchInput = document.getElementById('career-search-input');
+            const categoryPills = document.querySelectorAll('#category-filter-pills .filter-btn');
+            const grid = document.getElementById('careers-grid-container');
+            const emptyEl = document.getElementById('no-careers-found');
+
+            function render() {
+                let filtered = window.CAREERS_DATA;
+
+                if (activeCategory !== 'All') {
+                    filtered = filtered.filter(c => c.category === activeCategory);
+                }
+
+                if (searchQuery.trim()) {
+                    const q = searchQuery.toLowerCase().trim();
+                    filtered = filtered.filter(c => 
+                        c.name.toLowerCase().includes(q) ||
+                        c.tagline.toLowerCase().includes(q) ||
+                        c.description.toLowerCase().includes(q) ||
+                        c.category.toLowerCase().includes(q) ||
+                        (c.technicalSkills && c.technicalSkills.some(s => s.toLowerCase().includes(q)))
+                    );
+                }
+
+                grid.innerHTML = '';
+                if (filtered.length === 0) {
+                    emptyEl.style.display = 'block';
+                    grid.style.display = 'none';
+                } else {
+                    emptyEl.style.display = 'none';
+                    grid.style.display = 'grid';
+
+                    filtered.forEach(career => {
+                        const card = document.createElement('div');
+                        card.className = 'category-card';
+                        card.setAttribute('data-tilt', '');
+                        
+                        const matchScore = userMatchMap[career.id];
+                        const matchBadge = matchScore 
+                            ? `<span class="score-pill" style="margin-left: auto;">${matchScore}% Match</span>` 
+                            : '';
+
+                        const topSkills = (career.technicalSkills || []).slice(0, 3);
+
+                        card.innerHTML = `
+                            <div>
+                                <div class="category-card-top" style="align-items: center;">
+                                    <div class="category-icon">
+                                        <i data-lucide="${career.icon || 'briefcase'}"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="category-name">${career.name}</h3>
+                                        <span class="category-card-count">${career.category}</span>
+                                    </div>
+                                    ${matchBadge}
+                                </div>
+
+                                <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                                    ${career.tagline}
+                                </p>
+
+                                <div class="category-tags" style="margin-bottom: 1.25rem;">
+                                    ${topSkills.map(s => `<span class="badge badge-slate">${s}</span>`).join('')}
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto;">
+                                <a href="career.html?id=${career.id}" class="btn btn-primary btn-sm" style="flex: 1;">
+                                    <i data-lucide="arrow-right"></i> Profile
+                                </a>
+                                <a href="roadmap.html?career=${career.id}" class="btn btn-secondary btn-sm" title="View Learning Roadmap">
+                                    <i data-lucide="map"></i>
+                                </a>
+                                <a href="compare.html?career1=${career.id}" class="btn btn-secondary btn-sm" title="Compare this career">
+                                    <i data-lucide="columns-2"></i>
+                                </a>
+                            </div>
+                        `;
+
+                        grid.appendChild(card);
+                    });
+                }
+
+                if (window.initLucideIcons) window.initLucideIcons();
+            }
+
+            // Bind Search
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value;
+                    render();
+                });
+            }
+
+            // Bind Filter pills
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    activeCategory = pill.dataset.category;
+                    render();
+                });
+            });
+
+            render();
+        }
+    </script>
+</body>
+</html>
